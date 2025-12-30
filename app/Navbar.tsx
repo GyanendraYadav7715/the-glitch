@@ -36,7 +36,7 @@ export default function Navbar() {
         {/* Links Section */}
 
         <Link
-          href="/"
+          href="/home"
           className="text-gray-300 hover:text-white transition-colors font-medium"
         >
           Home

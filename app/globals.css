@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  /* Default Shadcn/UI style variables */
+  --color-background: #201f31;
+  --color-foreground: #ffffff;
+  --color-border: #3a3a3e;
+  --color-ring: #ffdd95;
+
+  /* Your Custom Colors */
+  --color-primary: #ffdd95;
+  --color-lightbg: #201f31ea;
+  --color-card: #2f2f33;
+  --color-btnbg: #3a3a3e;
+  --color-yellow: #f9ed69;
+  --color-purple: #b1b2ff;
+  --color-pink: #f2bed1;
+}
+
+@layer base {
+  * {
+    /* Now 'border' and 'ring' are recognized because they are in @theme */
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    /* Now 'background' and 'foreground' are recognized */
+    @apply bg-background text-foreground;
+  }
+}
