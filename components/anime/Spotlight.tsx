@@ -110,14 +110,14 @@ export default function SpotlightSlider({ spotlight }: SpotlightProps) {
 
               <div className="relative z-50 text-sm md:text-base mt-5 flex gap-2">
                 <Link href={`${config.siteRoutes.watch}${item.id}`}>
-                  <button className="bg-[#ffbade] rounded-3xl px-6 py-2 text-black flex justify-center items-center gap-2 font-semibold transition hover:bg-yellow-500">
+                  <button className="bg-[#ffbade] rounded-3xl px-6 py-2 text-black flex justify-center items-center gap-2 font-semibold transition cursor-pointer">
                     <Play size={18} fill="black" />
                     <span>Watch Now</span>
                   </button>
                 </Link>
 
                 <Link href={`${config.siteRoutes.detail}${item.id}`}>
-                  <button className="bg-gray-800 text-white rounded-3xl px-6 py-2 flex justify-center items-center gap-2 transition hover:bg-gray-700">
+                  <button className="bg-gray-800 text-white rounded-3xl px-6 py-2 flex justify-center items-center gap-2 transition hover:bg-gray-700 cursor-pointer">
                     <span>Detail</span>
                     <ChevronRight size={18} />
                   </button>
@@ -139,7 +139,7 @@ export default function SpotlightSlider({ spotlight }: SpotlightProps) {
             ),
             linear-gradient(
               to bottom,
-              transparent 0,
+              2 transparent 0,
               black 30%,
               black 70%,
               transparent

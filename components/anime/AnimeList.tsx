@@ -31,7 +31,7 @@ export default function AnimeGrid({
       {/* Header Section */}
       <div className="flex mt-8 mb-4 justify-between items-center px-1">
         {title ? (
-          <h1 className="text-xl md:text-2xl font-bold text-white uppercase italic">
+          <h1 className="text-xl md:text-2xl font-bold text-[#FFB6D9] uppercase">
             {title}
           </h1>
         ) : (
@@ -43,7 +43,7 @@ export default function AnimeGrid({
         {path && (
           <Link
             href={`${config.siteRoutes.discover}${path}`}
-            className="flex items-center gap-1 text-sm text-neutral-400 hover:text-[var(--primary)] transition-colors"
+            className="flex items-center gap-1 text-sm text-neutral-400 hover:text-[#FFB6D9] transition-colors"
           >
             <span>View more</span>
             <ChevronRight size={18} />
@@ -81,7 +81,7 @@ export default function AnimeGrid({
               <div className="px-1">
                 <h2
                   title={item.title}
-                  className="text-sm md:text-base font-semibold text-white truncate group-hover:text-[var(--primary)] transition-colors"
+                  className="text-sm md:text-base font-semibold text-white truncate group-hover:text-[#FFB6D9] transition-colors"
                 >
                   {item.title}
                 </h2>

@@ -41,22 +41,7 @@ const Footer = () => {
           <div className="h-6 w-px bg-gray-700 hidden md:block mx-4"></div>
 
           <div className="flex gap-3">
-            <SocialIcon
-              icon={<MessageSquare size={18} />}
-              bg="bg-[#5865F2]"
-              href="#"
-            />
-            <SocialIcon icon={<Send size={18} />} bg="bg-[#0088cc]" href="#" />
-            <SocialIcon
-              icon={<ArrowBigUpDash size={18} />}
-              bg="bg-[#ff4500]"
-              href="#"
-            />
-            <SocialIcon
-              icon={<Twitter size={18} />}
-              bg="bg-[#1da1f2]"
-              href="#"
-            />
+            
           </div>
         </div>
 
@@ -128,21 +113,6 @@ const Footer = () => {
 };
 
 // Sub-component for Social Icons
-const SocialIcon = ({
-  icon,
-  bg,
-  href,
-}: {
-  icon: React.ReactNode;
-  bg: string;
-  href: string;
-}) => (
-  <Link
-    href={href}
-    className={`${bg} text-white p-2 rounded-full hover:opacity-80 transition-opacity flex items-center justify-center`}
-  >
-    {icon}
-  </Link>
-);
+
 
 export default Footer;

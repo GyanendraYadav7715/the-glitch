@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import Link from "next/link";
 
 // Define the shape of the Episode object
-interface EpisodeData {
+export interface EpisodeData {
   id: string;
   episodeNumber: number;
   title: string;
@@ -12,58 +12,54 @@ interface EpisodeData {
 
 interface EpisodeProps {
   episode: EpisodeData;
-  currentEp: EpisodeData;
-  layout: "row" | "column" | string;
+  currentEp: EpisodeData | null; // Allow null if no episode is playing
+  layout: "row" | "column"; // Strict typing helps autocomplete
 }
 
 const Episode: React.FC<EpisodeProps> = ({ episode, currentEp, layout }) => {
   // Logic: Check if this is the currently playing episode
-  const isCurrent = episode.id === currentEp.id;
+  // Optional chaining in case currentEp is null
+  const isCurrent = currentEp?.id === episode.id;
 
   // Logic: Format the URL
-  // Note: Depending on your routing setup, ensure '::' to '?' conversion is handled on the destination page
   const episodeLink = `/watch/${episode.id.replaceAll("::", "?")}`;
 
   // Helper for background color logic
-  // Priority: Current (Primary) > Filler (Red) > Default (BtnBg)
   const getBgClass = () => {
-    if (isCurrent) return "bg-primary";
-    if (episode.isFiller) return "bg-red-500";
-    return "bg-btnbg";
+    if (isCurrent) return "bg-primary text-black"; // Combined text color here for simplicity
+    if (episode.isFiller) return "bg-red-500 text-white";
+    return "bg-btnbg text-white hover:bg-opacity-80"; // Added hover state
   };
 
-  const bgClass = getBgClass();
+  const baseClasses = getBgClass();
 
   // --- Layout: ROW View ---
   if (layout === "row") {
     return (
       <li
         title={episode.title}
-        className={`w-full px-2 py-3 text-black transition-colors ${bgClass}`}
+        className={`w-full px-2 py-3 transition-colors rounded-sm mb-1 ${baseClasses}`}
       >
         <Link href={episodeLink} className="block w-full">
           <div className="flex gap-3 items-center">
-            {/* Episode Number */}
-            <button
-              className={`text-sm font-medium ${
+            {/* Episode Number - CHANGED to span (button illegal inside a tag) */}
+            <span
+              className={`text-sm font-bold min-w-[24px] ${
                 isCurrent ? "text-black" : "text-primary"
               }`}
             >
               {episode.episodeNumber}
-            </button>
+            </span>
 
             {/* Episode Title */}
-            {/* Changed from <li> to <div>/<span> because nesting <li> is invalid HTML */}
-            <div
-              className={`flex-1 text-sm truncate ${
-                isCurrent ? "text-black" : "text-white"
-              }`}
-            >
-              {episode.title}
-            </div>
+            <div className="flex-1 text-sm truncate">{episode.title}</div>
 
             {/* Filler Indicator */}
-            {episode.isFiller && <span title="Filler">👻</span>}
+            {episode.isFiller && (
+              <span title="Filler Episode" role="img" aria-label="Filler">
+                👻
+              </span>
+            )}
           </div>
         </Link>
       </li>
@@ -74,20 +70,29 @@ const Episode: React.FC<EpisodeProps> = ({ episode, currentEp, layout }) => {
   return (
     <li
       title={episode.title}
-      className={`w-full rounded-sm py-1 transition-colors ${bgClass}`}
+      className={`w-full rounded-sm py-2 transition-colors ${baseClasses}`}
     >
-      <Link href={episodeLink} className="block w-full">
-        <p
-          className={`text-sm md:text-base text-center font-medium ${
-            isCurrent ? "text-black" : "text-white"
-          }`}
-        >
+      <Link
+        href={episodeLink}
+        className="block w-full h-full flex items-center justify-center"
+      >
+        <span className="text-sm md:text-base font-medium">
           {episode.episodeNumber}
-        </p>
+        </span>
       </Link>
     </li>
   );
 };
 
-export default Episode;
-
+// Optimization: Only re-render if props change
+// This is crucial for large lists of episodes
+export default memo(Episode, (prevProps, nextProps) => {
+  // Custom comparison logic (optional, but often faster)
+  return (
+    prevProps.episode.id === nextProps.episode.id &&
+    prevProps.layout === nextProps.layout &&
+    // Only re-render if the 'current' status of THIS specific episode changes
+    (prevProps.currentEp?.id === prevProps.episode.id) ===
+      (nextProps.currentEp?.id === nextProps.episode.id)
+  );
+});

@@ -28,7 +28,7 @@ export default function SoundsInfo({ episodes }: SoundsInfoProps) {
 
       {/* Subbed Count */}
       {episodes.sub !== undefined && (
-        <li className={`${badgeClass} bg-yellow-400`}>
+        <li className={`${badgeClass} bg-[#b0e3af]`}>
           <Captions size={12} strokeWidth={3} />
           <span>{episodes.sub}</span>
         </li>
@@ -36,7 +36,7 @@ export default function SoundsInfo({ episodes }: SoundsInfoProps) {
 
       {/* Dubbed Count */}
       {episodes.dub !== undefined && (
-        <li className={`${badgeClass} bg-purple-400`}>
+        <li className={`${badgeClass} bg-[#b9e7ff]`}>
           <Mic size={12} fill="black" />
           <span>{episodes.dub}</span>
         </li>
@@ -44,7 +44,7 @@ export default function SoundsInfo({ episodes }: SoundsInfoProps) {
 
       {/* Total Episodes (Pink Badge) */}
       {episodes.eps && (
-        <li className={`${badgeClass} bg-pink-400 px-2`}>{episodes.eps}</li>
+        <li className={`${badgeClass} bg-[#4a4957] px-2`}>{episodes.eps}</li>
       )}
     </ul>
   );

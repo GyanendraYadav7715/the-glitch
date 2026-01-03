@@ -51,7 +51,7 @@ const Player: React.FC<PlayerProps> = ({
   return (
     <div className="flex flex-col gap-2">
       {/* Video Container */}
-      <div className="w-full bg-background aspect-video relative rounded-sm max-w-screen-xl overflow-hidden">
+      <div className="w-full bg-background aspect-video relative rounded-sm max-w-7xl overflow-hidden">
         <iframe
           src={iframeSrc}
           className="w-full h-full"

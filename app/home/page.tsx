@@ -1,7 +1,7 @@
 // 1. Remove "use client" from here
 import AnimeCard from "@/components/anime/AnimeCard";
-import Navbar from "./Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "../../components/ui/Navbar";
+import Footer from "@/components/ui/Footer";
 import SpotLightSlider from "@/components/anime/Spotlight";
 import Trending from "@/components/anime/Treanding";
 import { getHomeData } from "@/lib/api";
@@ -13,11 +13,11 @@ const page = async () => {
   const homeData = response.data;
 
   return (
-    <div className="">
-      <Navbar />
+    <div className="bg-[#201f31]">
+      {/* <Navbar /> */}
       <SpotLightSlider spotlight={homeData.spotlight} />
       <Trending trending={homeData.trending} />
-      <section className="grid grid-cols-12 gap-2 my-5">
+      <section className="grid grid-cols-12 gap-2 my-5 px-5 bg-[#201f31]">
         <AnimeCard
           data={homeData.topAiring}
           title="Top Airing"
@@ -40,14 +40,14 @@ const page = async () => {
         />
       </section>
       <section className="row grid gap-2 justify-center grid-cols-12">
-        <div className="left col-span-12 xl:col-span-9">
+        <div className="left col-span-12 xl:col-span-9 pl-5">
           <AnimeList
             title="Latest Episode"
             path="recently-updated"
             data={homeData.latestEpisode}
           />
           <AnimeList
-            title="New Added"
+            title="New On HiAnime"
             path="recently-added"
             data={homeData.newAdded}
           />
@@ -69,7 +69,7 @@ const page = async () => {
           </div>
         </div>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

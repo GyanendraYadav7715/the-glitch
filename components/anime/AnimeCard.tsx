@@ -27,11 +27,14 @@ export default function AnimeListSection({
   return (
     <div className="col-span-12 md:col-span-6 mt-5 xl:col-span-3">
       {/* Heading - Ensure standard font-weights and colors */}
-      <h1 className="text-xl font-bold mb-4 text-white">{title}</h1>
+      <h1 className="text-xl font-bold mb-4 text-[#FFB6D9]">{title}</h1>
 
-      <div className="bg-[#1a1a1a] rounded-md p-3 h-auto w-full flex flex-col gap-4">
+      <div className=" rounded-md p-3 h-auto w-full flex flex-col gap-4">
         {data.map((item) => (
-          <div key={item.id} className="flex items-center gap-4 group">
+          <div
+            key={item.id}
+            className={`flex items-center gap-4 group border-t border-white/7 pt-2`}
+          >
             {/* Poster Image - Using Next.js Image Component for optimization */}
             <Link
               href={`${config.siteRoutes.detail}${item.id}`}
@@ -49,7 +52,7 @@ export default function AnimeListSection({
             {/* Details */}
             <div className="flex-1 min-w-0">
               <Link href={`${config.siteRoutes.detail}${item.id}`}>
-                <h2 className="text-sm font-bold text-white hover:text-[var(--primary)] transition-colors line-clamp-2 mb-1">
+                <h2 className="text-sm font-bold text-white hover:text-[#FFB6D9] transition-colors line-clamp-2 mb-1">
                   {item.title}
                 </h2>
               </Link>
@@ -75,7 +78,7 @@ export default function AnimeListSection({
           <div className="mt-2 pt-2 border-t border-white/5">
             <Link
               href={`${config.siteRoutes.discover}${path}`}
-              className="flex items-center gap-1 text-sm text-gray-400 hover:text-[var(--primary)] transition-colors w-fit"
+              className="flex items-center gap-1 text-sm text-[#FFB6D9] hover:text-[var(--primary)] transition-colors w-fit"
             >
               <span>View More</span>
               <ChevronRight size={16} />
