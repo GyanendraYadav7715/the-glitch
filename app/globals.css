@@ -20,6 +20,17 @@ body {
   border-radius: 3px;
 }
 
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 /* @theme {
    
   --color-background: #201f31;

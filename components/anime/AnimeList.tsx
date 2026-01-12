@@ -31,7 +31,7 @@ export default function AnimeGrid({
       {/* Header Section */}
       <div className="flex mt-8 mb-4 justify-between items-center px-1">
         {title ? (
-          <h1 className="text-xl md:text-2xl font-bold text-[#FFB6D9] uppercase">
+          <h1 className="text-xl md:text-2xl font-bold text-[#FFB6D9] ">
             {title}
           </h1>
         ) : (

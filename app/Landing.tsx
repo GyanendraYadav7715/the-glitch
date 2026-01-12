@@ -5,18 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search, Menu, ArrowRightCircle, Music4, Pause } from "lucide-react"; // Imported Music & Pause
 import Image from "next/image";
-import { Lato, Outfit } from "next/font/google";
-
-const lato = Lato({
-  weight: ["100", "300", "400", "700", "900"],
-  subsets: ["latin"],
-  variable: "--font-lato",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-});
+ 
 
 const menuItems = [
   { title: "Home", path: "/home" },
@@ -87,7 +76,7 @@ const AnimeLanding: React.FC = () => {
 
   return (
     <div
-      className={`${lato.variable} ${outfit.variable} min-h-screen w-full bg-[#121212] text-[#F5F5F5] font-sans relative overflow-x-hidden`}
+      className={`min-h-screen w-full bg-[#121212] text-[#F5F5F5] font-sans relative overflow-x-hidden`}
     >
       {/* 4. Audio Element (Hidden) */}
       {/* Replace '/music.mp3' with your actual file path inside the public folder */}
@@ -140,14 +129,14 @@ const AnimeLanding: React.FC = () => {
             <nav
               className={`${
                 isMobileMenuOpen ? "block" : "hidden"
-              } lg:block mb-8`}
+              } lg:block pb-4`}
             >
               <ul className="flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-8 bg-[#1E1E1E]/80 backdrop-blur-md lg:bg-transparent p-6 lg:p-0 rounded-3xl">
                 {menuItems.map((item, index) => (
                   <li key={index}>
                     <Link
                       href={item.path}
-                      className="text-sm font-semibold tracking-wide hover:text-[#FFB6D9] transition-colors duration-200"
+                      className="text-large font-semibold tracking-wide hover:text-[#FFB6D9] transition-colors duration-200"
                     >
                       {item.title}
                     </Link>

@@ -1,13 +1,14 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
-import { Open_Sans } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const openSans = Open_Sans({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-open-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins", // CSS variable define kiya
   display: "swap",
 });
+
 export default function RootLayout({
   children,
 }: {
@@ -15,8 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={openSans.variable}>
-        <div id="sidebar_menu_bg"></div>
+      {/* className add karne se Poppins default font ban jayega */}
+      <body className={`${poppins.variable} ${poppins.className} antialiased`}>
         {children}
       </body>
     </html>

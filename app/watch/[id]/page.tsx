@@ -82,10 +82,12 @@ const AnimeWatchPage = ({ params }: PageProps) => {
 
   // 7. MAIN RENDER
   return (
-    <div className="bg-[#0f0f0f] text-white min-h-screen p-4 font-sans">
+    <div className="bg-[#201f31] text-white min-h-screen p-4 font-sans">
       {/* Breadcrumb */}
-      <div className="w-full h-6 bg-gray-800/30 mb-6 rounded text-xs flex items-center px-4 text-gray-500 border border-gray-800/50">
-        <span className="hover:text-pink-500 cursor-pointer">Home</span>
+      <div className="w-full text-white  h-15 bg-[#201f31]/30 mb-6 rounded text-xs flex items-center px-4  border border-gray-900 ">
+        <span className="hover:text-pink-500 cursor-pointer text-xl ">
+          Home
+        </span>
         <span className="mx-2">&bull;</span>
         <span>Watch</span>
         <span className="mx-2">&bull;</span>

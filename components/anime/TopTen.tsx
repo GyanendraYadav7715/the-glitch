@@ -6,14 +6,19 @@ import Image from "next/image";
 import config from "@/config/config";
 import SoundsInfo from "./SoundsInfo";
 
-// Define Types for strict safety
+// 1. Defined strict interface for episodes to match SoundsInfo
+interface EpisodeData {
+  sub: number;
+  dub?: number;
+}
+
 interface TopItem {
   id: string;
   rank: number;
   title: string;
   poster: string;
   type?: string;
-  episodes: any;
+  episodes: EpisodeData; // Changed from any
 }
 
 interface TopTenProps {
@@ -30,21 +35,25 @@ type TabType = (typeof TABS)[number];
 export default function TopTen({ data }: TopTenProps) {
   const [selectedTab, setSelectedTab] = useState<TabType>("today");
 
-  return (
-    <section className="w-full">
-      {/* Header & Tab Buttons */}
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="heading text-xl font-bold uppercase italic">Top 10</h1>
+  // Fallback to empty array if data for a tab is missing
+  const currentItems = data[selectedTab] || [];
 
-        <div className="flex bg-[#1a1a1a] p-1 rounded-md">
+  return (
+    <section className="w-full font-poppins mt-6">
+      {/* Header & Tab Buttons */}
+      <div className="flex justify-between items-center mb-5">
+        <h2 className="text-xl font-bold uppercase  text-[#FFB6D9]">Top 10</h2>
+
+        <div className="flex bg-[#2b2a3c] p-1 rounded-lg border border-white/5">
           {TABS.map((tab) => (
             <button
               key={tab}
               onClick={() => setSelectedTab(tab)}
-              className={`px-4 py-1.5 rounded-sm text-xs md:text-sm font-bold uppercase transition-all ${
+              aria-label={`Show top 10 for ${tab}`}
+              className={`px-4 py-1.5 rounded-md text-xs font-bold uppercase transition-all duration-200 ${
                 selectedTab === tab
-                  ? "bg-[var(--primary)] text-black"
-                  : "text-gray-400 hover:text-[var(--primary)]"
+                  ? "bg-[#FFB6D9] text-black shadow-md"
+                  : "text-gray-400 hover:text-white"
               }`}
             >
               {tab}
@@ -54,59 +63,65 @@ export default function TopTen({ data }: TopTenProps) {
       </div>
 
       {/* List Container */}
-      <div className="bg-[#1a1a1a] px-3 sm:px-5 py-4 rounded-md">
-        {data[selectedTab]?.map((item) => (
-          <div
-            key={item.id}
-            className="flex items-center gap-3 sm:gap-5 mb-5 last:mb-0 group"
-          >
-            {/* Rank Number */}
-            <span
-              className={`text-xl sm:text-3xl font-black italic min-w-[40px] ${
-                item.rank <= 3
-                  ? "text-[var(--primary)] border-b-2 border-[var(--primary)]"
-                  : "text-gray-500"
-              }`}
+      <div className="bg-[#2b2a3c] px-4 py-2 rounded-xl border border-white/5">
+        {currentItems.length > 0 ? (
+          currentItems.map((item) => (
+            <div
+              key={item.id}
+              className="flex items-center gap-4 py-4 border-b border-white/5 last:border-0 group"
             >
-              {item.rank < 10 ? `0${item.rank}` : item.rank}
-            </span>
+              {/* Rank Number */}
+              <span
+                className={`text-2xl sm:text-3xl font-black  min-w-[45px] transition-colors ${
+                  item.rank <= 3
+                    ? "text-white"
+                    : "text-gray-600 group-hover:text-gray-400"
+                }`}
+              >
+                {item.rank < 10 ? `0${item.rank}` : item.rank}
+              </span>
 
-            {/* Poster Thumbnail */}
-            <Link
-              href={`${config.siteRoutes.detail}${item.id}`}
-              className="relative w-14 sm:w-16 aspect-[10/14] flex-shrink-0 overflow-hidden rounded-md"
-            >
-              <Image
-                src={item.poster}
-                alt={item.title}
-                fill
-                sizes="64px"
-                className="object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-            </Link>
-
-            {/* Info */}
-            <div className="flex-1 min-w-0">
-              <Link href={`${config.siteRoutes.detail}${item.id}`}>
-                <h2 className="text-sm sm:text-base font-bold text-white hover:text-[var(--primary)] truncate transition-colors mb-1">
-                  {item.title}
-                </h2>
+              {/* Poster Thumbnail */}
+              <Link
+                href={`${config.siteRoutes.detail}${item.id}`}
+                className="relative w-14 sm:w-16 aspect-[3/4] flex-shrink-0 overflow-hidden rounded-lg bg-[#222]"
+              >
+                <Image
+                  src={item.poster}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 640px) 56px, 64px"
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
               </Link>
 
-              <div className="flex items-center gap-1">
-                <SoundsInfo episodes={item.episodes} />
-                {item.type && (
-                  <>
-                    <span className="block mx-1 size-1 bg-gray-600 rounded-full" />
-                    <span className="text-xs text-gray-400 uppercase">
-                      {item.type}
-                    </span>
-                  </>
-                )}
+              {/* Info Area */}
+              <div className="flex-1 min-w-0">
+                <Link href={`${config.siteRoutes.detail}${item.id}`}>
+                  <h3 className="text-sm sm:text-base font-bold text-slate-100 hover:text-[#FFB6D9] truncate transition-colors mb-1.5">
+                    {item.title}
+                  </h3>
+                </Link>
+
+                <div className="flex items-center gap-2">
+                  <SoundsInfo episodes={item.episodes} />
+                  {item.type && (
+                    <div className="flex items-center gap-2">
+                      <span className="size-1 bg-gray-600 rounded-full" />
+                      <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                        {item.type}
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
+          ))
+        ) : (
+          <div className="py-10 text-center text-gray-500 text-sm">
+            No data available for this period.
           </div>
-        ))}
+        )}
       </div>
     </section>
   );

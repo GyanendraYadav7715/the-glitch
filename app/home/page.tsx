@@ -1,20 +1,21 @@
 // 1. Remove "use client" from here
 import AnimeCard from "@/components/anime/AnimeCard";
-import Navbar from "../../components/ui/Navbar";
+import Navbar from "../../components/layout/Navbar";
 import Footer from "@/components/ui/Footer";
 import SpotLightSlider from "@/components/anime/Spotlight";
 import Trending from "@/components/anime/Treanding";
 import { getHomeData } from "@/lib/api";
 import AnimeList from "@/components/anime/AnimeList";
-import Genres from "@/components/anime/Genres";
+import Genre from "@/components/anime/Genres";
 import TopTen from "@/components/anime/TopTen";
+import EstimatedSchedule from "@/components/anime/EstimatedSchedule";
 const page = async () => {
   const response = await getHomeData();
   const homeData = response.data;
 
   return (
-    <div className="bg-[#201f31]">
-      {/* <Navbar /> */}
+    <div className="bg-[#201f31] w-full min-h-screen">
+      <Navbar />
       <SpotLightSlider spotlight={homeData.spotlight} />
       <Trending trending={homeData.trending} />
       <section className="grid grid-cols-12 gap-2 my-5 px-5 bg-[#201f31]">
@@ -51,25 +52,23 @@ const page = async () => {
             path="recently-added"
             data={homeData.newAdded}
           />
+          {/* <EstimatedSchedule /> */}
           <AnimeList
             title="Top Upcoming"
             path="top-upcoming"
             data={homeData.topUpcoming}
           />
         </div>
-        <div className="right col-span-12 xl:col-span-3 space-y-4">
-          <div className="genre">
-            <h1 className="heading">Genres</h1>
-            <div className="sm:bg-lightbg bg-none rounded-sm px-2 py-1">
-              <Genres className="sm:w-1/3 px-2 rounded-sm py-1 mb-2 line-clamp-1 bg-lightbg sm:bg-transparent mx-1 sm:mx-0 text-center" />
-            </div>
-          </div>
+        <div className="right col-span-12 xl:col-span-3 space-y-4 ">
           <div className="top10">
             <TopTen data={homeData.top10} />
           </div>
+          <div className="genre">
+            <Genre />
+          </div>
         </div>
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

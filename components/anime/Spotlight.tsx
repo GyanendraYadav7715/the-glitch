@@ -117,7 +117,7 @@ export default function SpotlightSlider({ spotlight }: SpotlightProps) {
                 </Link>
 
                 <Link href={`${config.siteRoutes.detail}${item.id}`}>
-                  <button className="bg-gray-800 text-white rounded-3xl px-6 py-2 flex justify-center items-center gap-2 transition hover:bg-gray-700 cursor-pointer">
+                  <button className="bg-[#2b2a3c] text-white rounded-3xl px-6 py-2 flex justify-center items-center gap-2 transition hover:bg-gray-700 cursor-pointer">
                     <span>Detail</span>
                     <ChevronRight size={18} />
                   </button>

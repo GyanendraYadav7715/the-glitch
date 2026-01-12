@@ -1,11 +1,7 @@
 import Landing from "./Landing"
 
 const page = () => {
-  return (
-    <div>
-      <Landing />
-    </div>
-  );
+  return <Landing />;
 };
 
 export default page;
