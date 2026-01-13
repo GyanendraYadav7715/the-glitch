@@ -1,72 +1,78 @@
+import React from "react";
 import Link from "next/link";
-import { X, Shuffle, Disc, Rss, MessageCircle } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
+import { sidebarLinks } from "@/config/meta";
+import Genres from "./Genres";
 
-export default function Sidebar({ isOpen, onClose }) {
+// Define the types for your links
+interface SidebarLink {
+  name: string;
+  link: string;
+}
+
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void; // Changed from toggleSidebar to onClose
+}
+
+const Sidebar: React.FC<SidebarProps> = ({
+  isOpen,
+  onClose, // Changed from toggleSidebar
+}) => {
   return (
     <>
       {/* Overlay */}
       {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] transition-opacity"
-          onClick={onClose}
-        />
+        <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
       )}
 
-      {/* Drawer */}
-      <aside
-        className={`fixed top-0 left-0 h-full w-72 bg-[#1a1a2e] z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+      {/* Sidebar */}
+      <div
+        className={`
+          sidebar transition-all fixed overflow-y-auto h-full z-50 top-0 left-0 w-64 md:w-80 bg-[rgba(255,255,255,.1)] backdrop-blur-md
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
       >
-        <div className="flex flex-col h-full">
-          <div className="flex items-center justify-between p-5 border-b border-white/5">
-            <span className="text-pink-400 font-black text-2xl tracking-tighter">
-              h!anime
-            </span>
-            <button
-              onClick={onClose}
-              className="text-white hover:rotate-90 transition-transform duration-200"
-            >
-              <X size={24} />
-            </button>
-          </div>
-
-          <nav className="flex-1 overflow-y-auto p-4 space-y-1 custom-scrollbar">
-            <SidebarLink href="/" label="Home" />
-            <SidebarLink href="/movies" label="Movies" />
-            <SidebarLink href="/popular" label="Most Popular" />
-
-            <div className="pt-4 mt-4 border-t border-white/5 space-y-1">
-              <SidebarLink
-                href="/random"
-                label="Random"
-                icon={<Shuffle size={18} />}
-              />
-              <SidebarLink
-                href="/community"
-                label="Community"
-                icon={<MessageCircle size={18} />}
-              />
-            </div>
-          </nav>
+        {/* Header / Close Button */}
+        <div className="buttons h-10 flex justify-between mx-2 mt-4">
+          <button
+            className="flex bg-black basis-80 hover:text-primary rounded-lg pl-4 items-center gap-2 text-white"
+            onClick={onClose}
+          >
+            <ChevronLeft size={20} />
+            <span>close menu</span>
+          </button>
         </div>
-      </aside>
+
+        {/* Navigation Links */}
+        <ul className="py-4 text-white">
+          {sidebarLinks.map((item) => (
+            <li
+              key={item.link}
+              className="py-4 pl-4 hover:text-primary border-b border-[rgba(255,255,255,.05)] w-full transition-colors"
+              onClick={onClose}
+            >
+              <Link href={item.link} className="block w-full">
+                {item.name}
+              </Link>
+            </li>
+          ))}
+
+          <li className="py-4 pl-4 w-full text-white text-sm tracking-widest opacity-50">
+            Genres
+          </li>
+
+          {/* Genres Component */}
+          <div className="w-full my-2 pl-4">
+            <Genres
+              className="w-1/2 my-2 pl-4 hover:opacity-[.7]"
+              onToggle={onClose}
+            />
+          </div>
+        </ul>
+      </div>
     </>
   );
-}
+};
 
-function SidebarLink({ href, label, icon }) {
-  return (
-    <Link
-      href={href}
-      className="flex items-center gap-3 text-gray-300 hover:text-white hover:bg-white/10 px-4 py-3 rounded-md transition-all group"
-    >
-      {icon && (
-        <span className="text-pink-400 group-hover:scale-110 transition-transform">
-          {icon}
-        </span>
-      )}
-      <span className="font-medium text-[15px]">{label}</span>
-    </Link>
-  );
-}
+export default Sidebar;

@@ -18,7 +18,7 @@ const page = async () => {
       <Navbar />
       <SpotLightSlider spotlight={homeData.spotlight} />
       <Trending trending={homeData.trending} />
-      <section className="grid grid-cols-12 gap-2 my-5 px-5 bg-[#201f31]">
+      <section className="grid grid-cols-12 gap-2 my-5 px-5 bg-[#201f31] pt-20">
         <AnimeCard
           data={homeData.topAiring}
           title="Top Airing"

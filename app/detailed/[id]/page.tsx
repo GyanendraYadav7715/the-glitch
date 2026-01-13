@@ -1,13 +1,26 @@
-// TypeScript interfaces
 import Link from "next/link";
 import config from "@/config/config";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/ui/Footer";
+
 import { SynopsisSection } from "../_components/SynopsisSection";
+// Ensure you have run: npm install react-icons
+import {
+  FaPlay,
+  FaPlus,
+  FaTelegramPlane,
+  FaTwitter,
+  FaFacebookF,
+  FaRedditAlien,
+  FaShareAlt,
+} from "react-icons/fa";
+
+// --- Types & Interfaces ---
 interface Episodes {
   sub: number;
   dub: number;
   eps: number;
 }
-
 interface Aired {
   from: string;
   to: string | null;
@@ -39,295 +52,263 @@ interface ApiResponse {
   success: boolean;
   data: AnimeData;
 }
-
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-// Fetch anime data function
+// --- Data Fetching ---
 async function getAnimeData(id: string): Promise<AnimeData | null> {
   try {
-    // Replace with your actual API endpoint
     const res = await fetch(`http://localhost:3030/api/v1/anime/${id}`, {
-       cache:"force-cache"
+      cache: "force-cache",
     });
-
-    if (!res.ok) {
-      return null;
-    }
-
+    if (!res.ok) return null;
     const data: ApiResponse = await res.json();
     return data.success ? data.data : null;
   } catch (error) {
-    console.error("Error fetching anime data:", error);
+    console.error("Error:", error);
     return null;
   }
 }
 
+// --- Main Page Component ---
 const AnimeDetailPage = async ({ params }: Props) => {
   const resolvedParams = await params;
-  const id = resolvedParams.id;
+  const animeData = await getAnimeData(resolvedParams.id);
 
-  const animeData = await getAnimeData(id);
-
-  if (!animeData) {
+  if (!animeData)
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-gray-950 flex items-center justify-center">
-        <div className="text-white text-xl">Anime not found</div>
+      <div className="min-h-screen bg-[#2a2c31] flex items-center justify-center text-white">
+        Anime not found
       </div>
     );
-  }
 
   const truncatedSynopsis =
-    animeData.synopsis.length > 200
-      ? animeData.synopsis.slice(0, 200)
+    animeData.synopsis.length > 250
+      ? animeData.synopsis.slice(0, 250)
       : animeData.synopsis;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-gray-950">
-      {/* Breadcrumb Navigation */}
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center gap-2 text-gray-400 text-sm">
-          <span className="hover:text-white cursor-pointer">Home</span>
-          <span>•</span>
-          <span className="hover:text-white cursor-pointer">TV</span>
-          <span>•</span>
-          <span className="text-white">{animeData.title}</span>
-        </div>
-      </div>
+    <>
+      <div className="bg-[#201f31] w-full min-h-screen">
+        <Navbar />
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left Section - Poster */}
-          <div className="flex-shrink-0">
-            <img
-              src={animeData.poster}
-              alt={animeData.title}
-              className="w-64 h-auto rounded-lg shadow-2xl"
-            />
-            <button className="w-full mt-4 bg-gray-700 hover:bg-gray-600 text-white py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                <path
-                  fillRule="evenodd"
-                  d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                  clipRule="evenodd"
+        <div className="relative w-full h-full bg-[#2b2a3c] text-[#eceae2]">
+          <div className="relative z-10 container mx-auto px-4 py-6">
+            <div className="flex flex-col lg:flex-row items-start gap-6">
+              {/* LEFT COLUMN: POSTER (Locked Width) */}
+              <div className="w-full lg:w-64 flex-shrink-0 pt-15 pl-10 space-y-3">
+                <img
+                  src={animeData.poster}
+                  alt={animeData.title}
+                  className="w-[180px] h-[266px] rounded shadow-2xl object-cover border border-white/5"
                 />
-              </svg>
-              Watch2gether
-            </button>
-          </div>
+                <div className="w-[180px] bg-[#1e2024]/80 backdrop-blur-sm p-3 rounded text-center gap-2 cursor-pointer hover:bg-gray-800 transition group border border-white/5 flex items-center justify-center hidden">
+                  <span className="text-pink-400 group-hover:animate-pulse">
+                    ((●))
+                  </span>
+                  <span className="text-sm font-medium">Watch2gether</span>
+                </div>
+              </div>
 
-          {/* Middle Section - Main Content */}
-          <div className="flex-grow">
-            <h1 className="text-5xl font-bold text-white mb-4">
-              {animeData.title}
-            </h1>
+              {/* MIDDLE COLUMN: INFO (Flexible, takes remaining space) */}
+              <div className="flex-1 min-w-0 pt-15">
+                <div className="flex items-center gap-2 text-[13px] text-gray-400 mb-8">
+                  <Link href="/home" className="hover:text-white transition">
+                    Home
+                  </Link>
+                  <span>•</span>
+                  <Link href="/tv" className="hover:text-white transition">
+                    TV
+                  </Link>
+                  <span>•</span>
+                  <span className="text-gray-100">{animeData.title}</span>
+                </div>
+                <h1 className="text-4xl lg:text-3xl font-semibold text-white mb-5 tracking-tight">
+                  {animeData.title}
+                </h1>
 
-            {/* Badges */}
-            <div className="flex flex-wrap items-center gap-2 mb-6">
-              <span className="px-3 py-1 bg-green-600 text-white text-sm font-semibold rounded">
-                {animeData.rating}
-              </span>
-              <span className="px-3 py-1 bg-pink-600 text-white text-sm font-semibold rounded">
-                HD
-              </span>
-              <span className="px-3 py-1 bg-green-600 text-white text-sm font-semibold rounded flex items-center gap-1">
-                <svg
-                  className="w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
-                </svg>
-                {animeData.episodes.sub}
-              </span>
-              <span className="px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded flex items-center gap-1">
-                <svg
-                  className="w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0z" />
-                </svg>
-                {animeData.episodes.dub}
-              </span>
-              <span className="text-gray-400 text-sm">• {animeData.type}</span>
-              <span className="text-gray-400 text-sm">
-                • {animeData.duration}
-              </span>
-            </div>
+                {/* BADGES ROW */}
+                <div className="flex flex-wrap items-center gap-2 mb-8 text-[12px] font-bold">
+                  <span className="px-2 py-0.5 bg-white text-black rounded-sm">
+                    PG-13
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#ffbade] text-black rounded-sm">
+                    HD
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#4ef49a] text-black rounded-sm flex items-center gap-1">
+                    <span className="text-[10px] opacity-60 italic">CC</span>{" "}
+                    {animeData.episodes.sub}
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#59c3f1] text-black rounded-sm flex items-center gap-1">
+                    <span className="text-[10px] opacity-60">🎙️</span>{" "}
+                    {animeData.episodes.dub}
+                  </span>
+                  <span className="text-gray-400 ml-2 font-medium">
+                    • TV • {animeData.duration}
+                  </span>
+                </div>
 
-            {/* Action Buttons - These need to be client components for interactivity */}
-            <div className="flex gap-4 mb-6">
-              <Link href={`${config.siteRoutes.watch}${animeData.id}`}>
-                <button className="px-8 py-3 bg-pink-400 hover:bg-pink-500 text-gray-900 font-semibold rounded-full transition-colors flex items-center gap-2">
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Watch now
-                </button>
-              </Link>
-              <button className="px-8 py-3 bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-full transition-colors flex items-center gap-2">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                {/* ACTION BUTTONS */}
+                <div className="flex flex-wrap gap-4 mb-8">
+                  <Link href={`${config.siteRoutes.watch}${animeData.id}`}>
+                    <button className="px-7 py-3 bg-[#ffbade] hover:bg-[#ff9ecc] text-black font-bold rounded-full flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-pink-500/10">
+                      <FaPlay size={12} /> Watch now
+                    </button>
+                  </Link>
+                  <button className="px-7 py-3 bg-white hover:bg-gray-100 text-black font-bold rounded-full flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-white/5">
+                    <FaPlus size={12} /> Add to List
+                  </button>
+                </div>
+
+                {/* SYNOPSIS AREA (Expanding this won't move the sidebars now) */}
+                <div className="mb-8 text-gray-200 leading-relaxed text-[13px]">
+                  <SynopsisSection
+                    synopsis={animeData.synopsis}
+                    truncated={truncatedSynopsis}
                   />
-                </svg>
-                Edit Watch List
-              </button>
-            </div>
-
-            {/* Synopsis - Use Client Component for expandable functionality */}
-            <SynopsisSection
-              synopsis={animeData.synopsis}
-              truncated={truncatedSynopsis}
-            />
-
-            {/* HiAnime Promotion */}
-            <div className="text-gray-400 text-sm mb-6">
-              <p>
-                HiAnime is the best site to watch{" "}
-                <span className="font-semibold text-white">
-                  {animeData.title}
-                </span>{" "}
-                SUB online, or you can even watch{" "}
-                <span className="font-semibold text-white">
-                  {animeData.title}
-                </span>{" "}
-                DUB in HD quality. You can also find{" "}
-                <span className="font-semibold text-white">
-                  {animeData.studios.join(", ")}
-                </span>{" "}
-                anime on HiAnime website.
-              </p>
-            </div>
-
-            {/* Share Section */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                  <span className="text-2xl">👤</span>
                 </div>
-                <div>
-                  <p className="text-white font-semibold">Share Anime</p>
-                  <p className="text-gray-400 text-sm">to your friends</p>
-                </div>
-                <span className="text-gray-500 text-sm">2.6k Shares</span>
-              </div>
 
-              <div className="flex gap-2 ml-auto">
-                <button className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-colors text-sm font-semibold">
-                  Share
-                </button>
-                <button className="px-6 py-2 bg-black hover:bg-gray-900 text-white rounded-full transition-colors text-sm font-semibold">
-                  Tweet
-                </button>
-                <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors text-sm font-semibold">
-                  Share
-                </button>
-                <button className="px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-full transition-colors text-sm font-semibold">
-                  🔴
-                </button>
-                <button className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-full transition-colors text-sm font-semibold">
-                  ⚡
-                </button>
-              </div>
-            </div>
-          </div>
+                <p className="text-[14px] text-gray-400 leading-relaxed mb-10 border-l-2 border-pink-400/30 pl-4">
+                  HiAnime is the best site to watch{" "}
+                  <span className="text-white font-semibold">
+                    {animeData.title}
+                  </span>{" "}
+                  SUB online, or you can even watch{" "}
+                  <span className="text-white font-semibold">
+                    {animeData.title}
+                  </span>{" "}
+                  DUB in HD quality.
+                </p>
 
-          {/* Right Section - Details */}
-          <div className="w-full lg:w-80 bg-gray-800 bg-opacity-50 rounded-lg p-6 h-fit">
-            <div className="space-y-4 text-sm">
-              <div>
-                <span className="text-gray-400">Japanese: </span>
-                <span className="text-white">{animeData.japanese}</span>
-              </div>
+                {/* SOCIAL SHARE SECTION */}
+                <div className="flex flex-col md:flex-row md:items-center gap-6 pt-8 border-t border-white/5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-pink-400/20 bg-gray-800">
+                      <img
+                        src="/landing.jpeg"
+                        alt="Share"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-pink-300 font-semibold text-sm tracking-wide ">
+                        Share Anime
+                      </p>
+                      <p className="text-white-500 text-[15px]">
+                        to your friends
+                      </p>
+                    </div>
+                  </div>
 
-              <div>
-                <span className="text-gray-400">Synonyms: </span>
-                <span className="text-white">{animeData.synonyms}</span>
-              </div>
-
-              <div>
-                <span className="text-gray-400">Aired: </span>
-                <span className="text-white">
-                  {animeData.aired.from} to {animeData.aired.to || "?"}
-                </span>
-              </div>
-
-              <div>
-                <span className="text-gray-400">Premiered: </span>
-                <span className="text-white">{animeData.premiered}</span>
-              </div>
-
-              <div>
-                <span className="text-gray-400">Duration: </span>
-                <span className="text-white">{animeData.duration}</span>
-              </div>
-
-              <div>
-                <span className="text-gray-400">Status: </span>
-                <span className="text-white">{animeData.status}</span>
-              </div>
-
-              <div>
-                <span className="text-gray-400">MAL Score: </span>
-                <span className="text-white">{animeData.MAL_score}</span>
-              </div>
-
-              <div>
-                <span className="text-gray-400 block mb-2">Genres:</span>
-                <div className="flex flex-wrap gap-2">
-                  {animeData.genres.map((genre, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 bg-gray-700 text-white rounded-full text-xs hover:bg-gray-600 cursor-pointer transition-colors"
-                    >
-                      {genre}
-                    </span>
-                  ))}
+                  <div className="flex flex-wrap gap-2">
+                    <SocialBtn
+                      icon={<FaTelegramPlane />}
+                      label="Share"
+                      color="bg-[#2ca5e0]"
+                    />
+                    <SocialBtn
+                      icon={<FaTwitter />}
+                      label="Tweet"
+                      color="bg-[#1da1f2]"
+                    />
+                    <SocialBtn
+                      icon={<FaFacebookF />}
+                      label="Share"
+                      color="bg-[#1877f2]"
+                    />
+                    <SocialBtn
+                      icon={<FaRedditAlien />}
+                      label=""
+                      color="bg-[#ff4500]"
+                    />
+                    <div className="p-3 bg-[#70bd44] rounded-full text-white cursor-pointer hover:opacity-80 transition active:scale-90">
+                      <FaShareAlt size={14} />
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <span className="text-gray-400">Studios: </span>
-                <span className="text-white">
-                  {animeData.studios.join(", ")}
-                </span>
-              </div>
+              {/* RIGHT COLUMN: SIDEBAR (Locked Width) */}
+              <div className="w-full lg:w-[350px] flex-shrink-0 bg-[#2b2a3c]/90 backdrop-blur-xl border border-white/5 rounded-xl p-4 space-y-5 text-[14px]">
+                <MetaRow label="Japanese" value={animeData.japanese} />
+                <MetaRow label="Synonyms" value={animeData.synonyms} />
+                <MetaRow
+                  label="Aired"
+                  value={`${animeData.aired.from} to ${
+                    animeData.aired.to || "?"
+                  }`}
+                />
+                <MetaRow label="Premiered" value={animeData.premiered} />
+                <MetaRow label="Duration" value={animeData.duration} />
+                <MetaRow label="Status" value={animeData.status} />
+                <MetaRow label="MAL Score" value={animeData.MAL_score} />
 
-              <div>
-                <span className="text-gray-400">Producers: </span>
-                <span className="text-white">
-                  {animeData.producers.join(", ")}
-                </span>
+                <div className="pt-4 border-t border-white/10">
+                  <span className="text-gray-500 block mb-4 text-[11px] uppercase tracking-[0.1em] font-bold">
+                    Genres:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {animeData.genres.map((genre) => (
+                      <span
+                        key={genre}
+                        className="px-4 py-1.5 border border-white/10 rounded-full text-[12px] hover:text-[#ffbade] hover:border-[#ffbade] transition cursor-pointer bg-white/5"
+                      >
+                        {genre}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-white/10 space-y-4">
+                  <MetaRow
+                    label="Studios"
+                    value={animeData.studios.join(", ")}
+                  />
+                  <MetaRow
+                    label="Producers"
+                    value={animeData.producers.join(", ")}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 
- 
+// --- Sub-Components ---
 
+function MetaRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-start gap-4">
+      <span className="text-gray-500 text-[11px] font-bold uppercase tracking-wider min-w-[80px]">
+        {label}:
+      </span>
+      <span className="text-gray-200 font-medium flex-1">{value || "N/A"}</span>
+    </div>
+  );
+}
+
+function SocialBtn({
+  icon,
+  label,
+  color,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  color: string;
+}) {
+  return (
+    <button
+      className={`flex items-center gap-2 px-5 py-2.5 ${color} text-white rounded-full text-[12px] font-extrabold hover:brightness-110 transition shadow-lg active:scale-95`}
+    >
+      {icon} {label && <span className="uppercase tracking-wide">{label}</span>}
+    </button>
+  );
+}
 
 export default AnimeDetailPage;

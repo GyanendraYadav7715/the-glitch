@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="lg:px-4 py-3 sticky top-0 z-50 ">
+      <nav className="lg:px-4 py-3 sticky top-0 z-50  ">
         <div className="max-w-375 mx-auto flex items-center justify-between gap-4">
           {/* Left Section */}
           <div className="flex items-center gap-4">
@@ -68,7 +68,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Search Modal */}  
+      {/* Search Modal */}
       {isSearchOpen && (
         <div className="top-15 absolute bg-opacity-50 flex items-center justify-center z-50 lg:hidden">
           <div className="bg-[#201f31] rounded-sm p-4 w-11/12 max-w-md  flex items-center gap-2">

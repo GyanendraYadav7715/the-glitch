@@ -161,7 +161,9 @@ function AnimeCard({ item }: { item: AnimeItem }) {
 
       try {
         // Replace with your actual API endpoint
-        const response = await fetch(`/api/anime/${item.id}/details`);
+        const response = await fetch(
+          `http://localhost:3030/api/v1/anime/${item.id}`
+        );
         const data = await response.json();
         setDetailsData(data);
       } catch (error) {
