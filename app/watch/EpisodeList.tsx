@@ -30,38 +30,41 @@ const EpisodeList: React.FC<EpisodeListProps> = ({
   const filteredEpisodes = episodes.filter(
     (ep) =>
       ep.episodeNumber.toString().includes(searchQuery) ||
-      ep.title.toLowerCase().includes(searchQuery.toLowerCase())
+      ep.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
     <section className="lg:col-span-3 flex flex-col h-full bg-[#1c1c22] rounded-lg overflow-hidden border border-gray-800">
       {/* Header / Search */}
-      <div className="h-14 bg-[#23232b] flex items-center px-3 border-b border-gray-800 gap-2">
-        <div className="text-gray-400 text-xs font-bold uppercase tracking-wider">
-          Episodes
+      <div className="h-22 bg-[#0d0d15] px-3 border-b border-gray-800 ">
+        <div className="text-white text-xs font-bold  tracking-wider py-3">
+          List of episodes:
         </div>
-        <input
-          type="text"
-          placeholder="Search Number..."
-          className="flex-1 bg-[#15151a] text-gray-300 text-xs p-2 rounded border border-gray-700 focus:outline-none focus:border-pink-500 transition-colors"
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+        <div className="flex ">
+          <div></div>
+          <input
+            type="text"
+            placeholder="Search Number..."
+            className="flex-1 bg-[#15151a] text-gray-300 text-xs p-2 rounded border border-gray-700 focus:outline-none focus:border-[#FFB6D9] transition-colors"
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
       </div>
 
       {/* Scrollable List */}
-      <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-track-[#1c1c22] scrollbar-thumb-gray-600">
+      <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-track-[#1c1c22] scrollbar-thumb-gray-600 p-2 bg-[#191826]">
         {filteredEpisodes.map((ep, index) => {
-        const isActive = activeId === ep.id;
+          const isActive = activeId === ep.id;
 
           return (
             <button
               key={ep.id}
               onClick={() => onSelect(ep.id)}
-              className={`w-full text-left flex items-center px-4 py-3 border-b border-gray-800/50 transition-all duration-200 group
+              className={`w-full text-left flex items-center px-4 py-3 mb-2 border-b border-gray-800/50 transition-all duration-200 group
                 ${
                   isActive
-                    ? "bg-[#2d2b44] border-l-4 border-l-pink-500"
-                    : "bg-[#1c1c22] hover:bg-[#27272a] border-l-4 border-l-transparent"
+                    ? "bg-[#2d2b44] border-l-4 border-l-[#FFB6D9]"
+                    : "bg-[#2d2b44]/10 hover:bg-[#2d2b44] border-l-4 border-l-transparent transition"
                 }
                 ${index % 2 !== 0 && !isActive ? "bg-[#1f1f26]" : ""} 
               `}
@@ -70,7 +73,7 @@ const EpisodeList: React.FC<EpisodeListProps> = ({
               <div
                 className={`mr-4 text-sm font-mono ${
                   isActive
-                    ? "text-pink-500 font-bold"
+                    ? "text-[#FFB6D9] font-bold"
                     : "text-gray-500 group-hover:text-gray-300"
                 }`}
               >
@@ -92,7 +95,7 @@ const EpisodeList: React.FC<EpisodeListProps> = ({
 
                   {/* Filler Badge Logic */}
                   {ep.isFiller && (
-                    <span className="flex-shrink-0 px-1.5 py-0.5 rounded text-[10px] bg-orange-900/40 text-orange-400 border border-orange-500/30">
+                    <span className="flex-shrink-0 px-1.5 py-0.5 rounded-xl text-[10px] bg-orange-900/40 text-orange-400 border border-orange-500/30">
                       Filler
                     </span>
                   )}
@@ -106,7 +109,7 @@ const EpisodeList: React.FC<EpisodeListProps> = ({
 
               {/* Active Play Icon */}
               {isActive && (
-                <div className="ml-2 text-pink-500 animate-pulse">
+                <div className="ml-2 text-[#FFB6D9] animate-pulse">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -137,3 +140,8 @@ const EpisodeList: React.FC<EpisodeListProps> = ({
 };
 
 export default EpisodeList;
+
+
+
+
+ 

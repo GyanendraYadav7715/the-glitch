@@ -80,7 +80,7 @@ export default function SpotlightSlider({ spotlight }: SpotlightProps) {
 
             {/* Content Layer */}
             <div className="z-10 ml-2 md:ml-12 min-w-32 md:max-w-2xl absolute top-30 gap-5">
-              <h2 className="mb-2 text-[#ffbade] font-semibold text-xl">
+              <h2 className="mb-2 text-[#ffbade] font-medium text-xl p-3 text-left">
                 #{item.rank} Spotlight
               </h2>
 
@@ -101,9 +101,14 @@ export default function SpotlightSlider({ spotlight }: SpotlightProps) {
                   <Calendar size={16} />
                   <span>{item.aired}</span>
                 </li>
-                <li className="bg-[#ffbade] text-black text-sm font-bold px-2 rounded-lg">
-                  {item.quality}
-                </li>
+                <div className="flex">
+                  <li className="bg-[#ffbade] text-black text-sm font-bold px-2 rounded-lg">
+                    {item.quality}
+                  </li>
+                  <li className="bg-[#ffbade] text-black text-sm font-bold px-2 rounded-lg">
+                    {item.quality}
+                  </li>
+                </div>
               </ul>
 
               <p className="synopsis text-gray-300">{item.synopsis}</p>
@@ -130,7 +135,8 @@ export default function SpotlightSlider({ spotlight }: SpotlightProps) {
 
       <style jsx>{`
         .opacity-layer {
-          mask-image: linear-gradient(
+          mask-image:
+            linear-gradient(
               to right,
               transparent 0,
               black 30%,
@@ -145,7 +151,8 @@ export default function SpotlightSlider({ spotlight }: SpotlightProps) {
               transparent
             );
           mask-composite: intersect;
-          -webkit-mask-image: linear-gradient(
+          -webkit-mask-image:
+            linear-gradient(
               to right,
               transparent 0,
               black 30%,

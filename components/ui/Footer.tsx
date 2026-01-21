@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Top Section: Logo & Socials */}
           <div className="footer-top mb-6 pb-6 border-b border-white/10 flex flex-col md:flex-row items-center justify-start">
             <Link href="/home" className="footer-logo block mr-8 mb-4 md:mb-0">
-              <img src="./logo.png" alt="HiAnime" className="h-10 w-auto" />
+              <img src="/logo.png" alt="HiAnime" className="h-10 w-auto" />
             </Link>
 
             <div className="footer-joingroup flex items-center">
