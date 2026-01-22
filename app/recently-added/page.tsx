@@ -1,7 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/ui/Footer";
 import Genre from "@/components/anime/Genres";
-import AnimeCard from "@/components/anime/AnimeCard";
 import { getHomeData } from "@/lib/api";
 import AnimeList from "@/components/anime/AnimeList";
 import TopTen from "@/components/anime/TopTen";
@@ -14,7 +13,7 @@ const page = async () => {
       <Navbar />
       <section className="row grid gap-2 justify-center grid-cols-12 p-5">
         <div className="left col-span-12 xl:col-span-9 pl-5 pt-4">
-          <h1 className="text-[#ffbade] text-xl text-bold">Top Airing</h1>
+          <h1 className="text-[#ffbade] text-xl text-bold">Recently Added</h1>
           <AnimeList
             title="Top Upcoming"
             path="top-upcoming"

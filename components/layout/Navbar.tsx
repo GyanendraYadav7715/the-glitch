@@ -22,19 +22,12 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="text-white hover:text-pink-400 transition-colors not-first:lg:hidden"
+              className="text-white hover:text-[#ffbade] transition-colors not-first:lg:hidden"
             >
-              <Menu size={24} className="font-bold" />
+              <Menu size={30} className="font-bold" />
             </button>
             <Link href="/" className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt="Logo"
-                width={120}
-                height={40}
-                className="object-contain"
-                priority
-              />
+              <img src="/logo.png" alt="HiAnime" className="h-10 w-auto" />
             </Link>
           </div>
 
@@ -48,6 +41,34 @@ export default function Navbar() {
               <Search className="absolute right-2 top-2 text-white" size={20} />
             </div>
           </div> */}
+          <div
+            id="search"
+            className="hidden md:block w-[400px] mr-auto relative group"
+          >
+            <div className="search-content relative">
+              <form action="/search">
+                <a
+                  href="/filter"
+                  className="filter-icon absolute right-2 top-2 h-[26px] leading-[26px] bg-black text-white text-xs px-2 rounded hover:bg-accent hover:text-black transition-colors z-[3]"
+                >
+                  Filter
+                </a>
+                <input
+                  type="text"
+                  className="form-control search-input h-10 w-full text-black pl-4 pr-[100px] text-sm bg-white border-none shadow-sm focus:shadow-lg transition-shadow outline-none"
+                  name="keyword"
+                  placeholder="Search anime..."
+                  required
+                />
+                <button
+                  type="submit"
+                  className="search-icon absolute right-12 top-0 w-10 h-10 bg-transparent border-none text-black text-center leading-10 hover:text-accent"
+                >
+                  <i className="fas fa-search"></i>
+                </button>
+              </form>
+            </div>
+          </div>
 
           {/* Right Section */}
           <div className="flex items-center gap-3">

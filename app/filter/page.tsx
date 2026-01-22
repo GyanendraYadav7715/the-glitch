@@ -1,6 +1,7 @@
-import Navbar from "@/components/layout/Navbar";
+import FilterComponent from "../search/_components/FilterComponent";
+import Navbar from "../../components/layout/Navbar";
 import Footer from "@/components/ui/Footer";
-import Link from "next/link";
+// Removed the incorrect 'Span' import from next/dist/trace
 
 const Page = async () => {
   return (
@@ -16,33 +17,25 @@ const Page = async () => {
             {/* Simple CSS Circle Separator */}
             <span className="h-1.5 w-1.5 rounded-full bg-white"></span>
             <span className="text-gray-400 hover:text-white cursor-pointer transition-colors">
-              A-Z List
+              Filter
             </span>
           </h1>
         </nav>
 
-        <h1 className="text-[#ffbade] text-xl text-bold whitespace-nowrap">
-          Sort By Letters
-        </h1>
-
-        <ul className="flex flex-wrap -m-1 list-none p-0 mt-5">
-          {["All", "#", "0-9", ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")].map(
-            (char) => (
-              <li key={char} className="m-1">
-                <Link
-                  href={`/az-list/${char === "All" ? "all" : char}`}
-                  className="block px-2.5 py-1.5 bg-white/10 rounded hover:bg-accent hover:bg-[#ff8fbe] hover:shadow-xl hover:shadow-[#FFB6D9]/10 font-semibold text-[1.1em] transition-colors min-w-[40px] h-[40px]"
-                >
-                  {char}
-                </Link>
-              </li>
-            ),
-          )}
-        </ul>
         {/* Content Grid */}
         <section className="grid grid-cols-12 gap-6">
-          <div className="col-span-12"></div>
+          <div className="col-span-12">
+            <FilterComponent />
+          </div>
         </section>
+        <div className="flex justify-between items-center">
+          <h1 className="text-[#ffbade] text-xl text-bold whitespace-nowrap">
+            Filter Results
+          </h1>
+          <h1 className="text-[#ffbade] text-xl text-bold whitespace-nowrap">
+            8602 results
+          </h1>
+        </div>
       </main>
 
       <Footer />
