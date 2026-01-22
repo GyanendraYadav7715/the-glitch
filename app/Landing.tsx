@@ -5,11 +5,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search, Menu, ArrowRightCircle, Music4, Pause } from "lucide-react"; // Imported Music & Pause
 import Image from "next/image";
- 
 
 const menuItems = [
   { title: "Home", path: "/home" },
-  { title: "Movies", path: "/movies" },
+  { title: "Movies", path: "/movie" },
   { title: "TV Series", path: "/tv" },
   { title: "Most Popular", path: "/most-popular" },
   { title: "Top Airing", path: "/top-airing" },

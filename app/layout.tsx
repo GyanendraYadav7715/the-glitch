@@ -16,7 +16,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* className add karne se Poppins default font ban jayega */}
       <body className={`${poppins.variable} ${poppins.className} antialiased`}>
         {children}
       </body>

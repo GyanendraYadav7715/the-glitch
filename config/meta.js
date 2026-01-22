@@ -3,17 +3,20 @@ const sidebarLinks = [
   { name: 'Subbed Anime', link: '/subbed-anime' },
   { name: 'Dubbed Anime', link: '/dubbed-anime' },
   { name: 'Most Popular', link: '/most-popular' },
-  { name: 'Top Airing', link: '/top-airing' },
-  { name: 'most favorite', link: '/most-favorite' },
-  { name: 'latest completed', link: '/completed' },
-  { name: 'recently added', link: '/recently-added' },
-  { name: 'recently updated', link: '/recently-updated' },
-  { name: 'top upcoming', link: '/top-upcoming' },
-  { name: 'A-Z List', link: '/az-list' },
   { name: 'Movies', link: '/movie' },
+  { name: 'TV Series', link: '/tv' },
   { name: 'OVAs', link: '/ova' },
   { name: 'ONAs', link: '/ona' },
   { name: 'Specials', link: '/special' },
+  // { name: 'Top Airing', link: '/top-airing' },
+  // { name: 'most favorite', link: '/most-favorite' },
+  // { name: 'latest completed', link: '/completed' },
+  // { name: 'recently added', link: '/recently-added' },
+  // { name: 'recently updated', link: '/recently-updated' },
+  // { name: 'top upcoming', link: '/top-upcoming' },
+  // { name: 'A-Z List', link: '/az-list' },
+  
+  
 ]
 
 const genres = [

@@ -1,0 +1,73 @@
+import AnimeCard from "@/components/anime/AnimeCard";
+import SpotLightSlider from "@/components/anime/Spotlight";
+import Trending from "@/components/anime/Treanding";
+import AnimeList from "@/components/anime/AnimeList";
+import Genre from "@/components/anime/Genres";
+import TopTen from "@/components/anime/TopTen";
+import { AnimeService } from "@/services/anime-service";
+import { AnimeResponseData } from "@/types/home.type";
+
+const Page = async () => {
+  const response = await AnimeService.getHomeData();
+
+  const homeData: AnimeResponseData = response.data;
+
+  return (
+    <div className="bg-[#201f31] w-full min-h-screen">
+      <SpotLightSlider spotlight={homeData.spotlight} />
+      <Trending trending={homeData.trending} />
+
+      <section className="grid grid-cols-12 gap-2 my-5 px-5 bg-[#201f31] pt-20">
+        <AnimeCard
+          data={homeData.topAiring}
+          title="Top Airing"
+          path="top-airing"
+        />
+        <AnimeCard
+          data={homeData.mostPopular}
+          title="Most Popular"
+          path="most-popular"
+        />
+        <AnimeCard
+          data={homeData.mostFavorite}
+          title="Most Favorite"
+          path="most-favorite"
+        />
+        <AnimeCard
+          data={homeData.latestCompleted}
+          title="Completed"
+          path="completed"
+        />
+      </section>
+      <section className="row grid gap-2 justify-center grid-cols-12 px-5">
+        <div className="left col-span-12 xl:col-span-9">
+          <AnimeList
+            title="Latest Episode"
+            path="recently-updated"
+            data={homeData.latestEpisode}
+          />
+          <AnimeList
+            title="New On HiAnime"
+            path="recently-added"
+            data={homeData.newAdded}
+          />
+          <AnimeList
+            title="Top Upcoming"
+            path="top-upcoming"
+            data={homeData.topUpcoming}
+          />
+        </div>
+        <div className="right col-span-12 xl:col-span-3 space-y-4">
+          <div className="top10">
+            <TopTen data={homeData.top10} />
+          </div>
+          <div className="genre">
+            <Genre />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Page;
