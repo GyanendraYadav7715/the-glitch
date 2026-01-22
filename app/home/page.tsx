@@ -1,23 +1,26 @@
-// 1. Remove "use client" from here
 import AnimeCard from "@/components/anime/AnimeCard";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "@/components/ui/Footer";
 import SpotLightSlider from "@/components/anime/Spotlight";
 import Trending from "@/components/anime/Treanding";
-import { getHomeData } from "@/lib/api";
 import AnimeList from "@/components/anime/AnimeList";
 import Genre from "@/components/anime/Genres";
 import TopTen from "@/components/anime/TopTen";
-import EstimatedSchedule from "@/components/anime/EstimatedSchedule";
-const page = async () => {
-  const response = await getHomeData();
-  const homeData = response.data;
+import { AnimeService } from "@/services/anime-service";
+import { AnimeResponseData } from "@/types/home.type";
+
+const Page = async () => {
+  const response = await AnimeService.getHomeData();
+
+  const homeData: AnimeResponseData = response.data;
 
   return (
     <div className="bg-[#201f31] w-full min-h-screen">
       <Navbar />
+
       <SpotLightSlider spotlight={homeData.spotlight} />
       <Trending trending={homeData.trending} />
+
       <section className="grid grid-cols-12 gap-2 my-5 px-5 bg-[#201f31] pt-20">
         <AnimeCard
           data={homeData.topAiring}
@@ -40,8 +43,8 @@ const page = async () => {
           path="completed"
         />
       </section>
-      <section className="row grid gap-2 justify-center grid-cols-12">
-        <div className="left col-span-12 xl:col-span-9 pl-5">
+      <section className="row grid gap-2 justify-center grid-cols-12 px-5">
+        <div className="left col-span-12 xl:col-span-9">
           <AnimeList
             title="Latest Episode"
             path="recently-updated"
@@ -52,14 +55,13 @@ const page = async () => {
             path="recently-added"
             data={homeData.newAdded}
           />
-          {/* <EstimatedSchedule /> */}
           <AnimeList
             title="Top Upcoming"
             path="top-upcoming"
             data={homeData.topUpcoming}
           />
         </div>
-        <div className="right col-span-12 xl:col-span-3 space-y-4 ">
+        <div className="right col-span-12 xl:col-span-3 space-y-4">
           <div className="top10">
             <TopTen data={homeData.top10} />
           </div>
@@ -68,9 +70,10 @@ const page = async () => {
           </div>
         </div>
       </section>
+
       <Footer />
     </div>
   );
 };
 
-export default page;
+export default Page;
