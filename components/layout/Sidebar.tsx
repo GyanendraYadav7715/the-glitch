@@ -58,7 +58,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             </li>
           ))}
 
-          <li className="py-4 pl-4 w-full text-white text-sm tracking-widest opacity-50">
+          <li className="py-4 pl-4 w-full text-white text-sm tracking-widest">
             Genres
           </li>
 

@@ -2,17 +2,19 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, Search } from "lucide-react";
+import { Menu, Search, Bell} from "lucide-react";
 import AuthModal from "../auth/AuthModal";
 import Sidebar from "./Sidebar";
-// import  Avatar  from "../ui/Avatar";
-// import SocialButtons from "../SocialButtons"; // Adjust paths as needed
-// import NavButtons from "../NavButtons";       // Adjust paths as needed
-
+import SocialButtons from "./SocialButtons";
+import NavButtons from "./NavButtons";
+import UserDropdown from "./UserDropdown";
+import RegisterModal from "./RegisterModal";
 export default function Navbar() {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
 
   return (
     <>
@@ -26,21 +28,13 @@ export default function Navbar() {
             >
               <Menu size={30} className="font-bold" />
             </button>
-            <Link href="/" className="flex items-center">
+            <Link href="/home" className="flex items-center">
               <img src="/logo.png" alt="HiAnime" className="h-10 w-auto" />
             </Link>
           </div>
+          <SocialButtons />
+          <NavButtons />
 
-          {/* Middle Section (Search) */}
-          {/* <div className="flex-1 max-w-md hidden md:block">
-            <div className="relative">
-              <input
-                placeholder="Search..."
-                className="w-full px-4 py-2 rounded-sm"
-              />
-              <Search className="absolute right-2 top-2 text-white" size={20} />
-            </div>
-          </div> */}
           <div
             id="search"
             className="hidden md:block w-[400px] mr-auto relative group"
@@ -69,9 +63,31 @@ export default function Navbar() {
               </form>
             </div>
           </div>
+          <div className="flex items-center gap-4 ml-auto lg:ml-0">
+            <div className="relative cursor-pointer">
+              <Bell size={20} className="text-white/80" />
+              <span className="absolute -top-1 -right-1 bg-red-500 text-[8px] px-1 rounded-full">
+                3
+              </span>
+            </div>
+            <div className="relative">
+              {" "}
+              {/* Ensure the parent is relative */}
+              <div
+                className="flex items-center gap-1 cursor-pointer"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <div className="w-8 h-8 rounded-full border-2 border-white/20 overflow-hidden">
+                  <img src="/avtar.png" alt="Profile" />
+                </div>
+              </div>
+              {/* The Dropdown */}
+              {isDropdownOpen && <UserDropdown />}
+            </div>
+          </div>
 
           {/* Right Section */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ">
             {/* <SocialButtons /> */}
             <Search
               onClick={() => setIsSearchOpen(true)}
@@ -79,7 +95,8 @@ export default function Navbar() {
               size={25}
             />
             <button
-              onClick={() => setIsLoginOpen(true)}
+              // onClick={() => setIsLoginOpen(true)}
+              onClick={() => setShowRegister(true)}
               className="bg-[#ffbade]   text-black font-bold px-3 py-1.5 rounded-sm text-sm transition-transform active:scale-95"
             >
               Login
@@ -117,6 +134,10 @@ export default function Navbar() {
 
       {/* Render Components */}
       {isLoginOpen && <AuthModal onClose={() => setIsLoginOpen(false)} />}
+      <RegisterModal
+        isOpen={showRegister}
+        onClose={() => setShowRegister(false)}
+      />
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
     </>
   );

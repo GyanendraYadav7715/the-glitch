@@ -35,6 +35,7 @@ const Genres: React.FC<GenresProps> = ({ onToggleSidebar, ...attrs }) => {
           <Link
             href={`${config.siteRoutes.genre}${genre}`}
             onClick={onToggleSidebar}
+            className="capitalize"
           >
             {genre}
           </Link>
