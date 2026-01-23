@@ -1,8 +1,6 @@
 import Link from "next/link";
 import config from "@/config/config";
-
 import { SynopsisSection } from "../_components/SynopsisSection";
-// Ensure you have run: npm install react-icons
 import {
   FaPlay,
   FaPlus,
@@ -13,73 +11,18 @@ import {
   FaShareAlt,
 } from "react-icons/fa";
 
-// --- Types & Interfaces ---
-interface Episodes {
-  sub: number;
-  dub: number;
-  eps: number;
-}
-interface Aired {
-  from: string;
-  to: string | null;
-}
+import { AnimeService } from "@/services/anime-service";
+import { AnimeDetailedApiResponse } from "@/types/detailed.type";
 
-interface AnimeData {
-  title: string;
-  alternativeTitle: string;
-  japanese: string;
-  id: string;
-  poster: string;
-  rating: string;
-  type: string;
-  is18Plus: boolean;
-  episodes: Episodes;
-  synopsis: string;
-  synonyms: string;
-  aired: Aired;
-  premiered: string;
-  duration: string;
-  status: string;
-  MAL_score: string;
-  genres: string[];
-  studios: string[];
-  producers: string[];
-}
-
-interface ApiResponse {
-  success: boolean;
-  data: AnimeData;
-}
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-// --- Data Fetching ---
-async function getAnimeData(id: string): Promise<AnimeData | null> {
-  try {
-    const res = await fetch(`http://localhost:3030/api/v1/anime/${id}`, {
-      cache: "force-cache",
-    });
-    if (!res.ok) return null;
-    const data: ApiResponse = await res.json();
-    return data.success ? data.data : null;
-  } catch (error) {
-    console.error("Error:", error);
-    return null;
-  }
-}
-
-// --- Main Page Component ---
 const AnimeDetailPage = async ({ params }: Props) => {
   const resolvedParams = await params;
-  const animeData = await getAnimeData(resolvedParams.id);
-
-  if (!animeData)
-    return (
-      <div className="min-h-screen bg-[#2a2c31] flex items-center justify-center text-white">
-        Anime not found
-      </div>
-    );
+  const data: AnimeDetailedApiResponse =
+    await AnimeService.getAnimeDetailedData(resolvedParams.id);
+  const animeData = data.data;
 
   const truncatedSynopsis =
     animeData.synopsis.length > 250
@@ -270,7 +213,7 @@ const AnimeDetailPage = async ({ params }: Props) => {
             </div>
           </div>
         </div>
-       </div>
+      </div>
     </>
   );
 };

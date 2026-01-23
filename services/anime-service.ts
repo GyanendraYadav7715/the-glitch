@@ -1,37 +1,28 @@
 import { apiRequest } from "@/lib/api-client";
-import {
-    HomeApiResponse,
-    SearchApiResponse,
-    DetailedApiResponse,
-    CharactersApiResponse,
-    CharacterApiResponse,
-    VoiceActorDeatieldApiResposne
-} from "@/types/home.type";
-
+import { HomeApiResponse, SearchApiResponse } from "@/types/home.type";
+import { ScheduleApiResponse, ScheduleOneApiResponse } from "@/types/schedule.type"
+import { AnimeDetailedApiResponse } from "@/types/detailed.type"
+import { EpisodesApiResponse } from "@/types/episodes.type"
+import { CharactersApiResponse, CharacterApiResponse, VoiceActorDeatieldApiResposne } from "@/types/character.type"
 export const AnimeService = {
+
     getHomeData: async () => {
         return await apiRequest<HomeApiResponse>("/home");
     },
-
-    /**
-     * Fetches anime based on category and page number
-     * @param category - The type of anime (e.g., 'dubbed-anime', 'subbed-anime')
-     * @param page - The page number (defaults to 1)
-     * @param genres 
-     * @param letters 
-     */
-    getFilteredAnime: async (category: string, page: number = 1) => {
-        return await apiRequest<SearchApiResponse>(`/animes/${category}?page=${page}`);
+    getSearchAnime: async (keyword: string, page: number = 1) => {
+        return await apiRequest<SearchApiResponse>(`/search?keyword=${keyword}?page=${page}`);
     },
-
     getGenereAnime: async (genres: string, page: number = 1) => {
         return await apiRequest<SearchApiResponse>(`/animes/genre/${genres}?page=${page}`);
     },
-    getAZListAnime: async (letters: string, page: number = 1) => {
-        return await apiRequest<SearchApiResponse>(`/animes/az-list/${letters}?page=${page}`);
+    getScheduleAllData: async () => {
+        return await apiRequest<ScheduleApiResponse>(`/schadule`)
     },
-    getDetailedAnime: async (id: string) => {
-        return await apiRequest<DetailedApiResponse>(`/anime/${id}`)
+    getScheduleOneData: async (id: string) => {
+        return await apiRequest<ScheduleOneApiResponse>(`/schadule/next/${id}`)
+    },
+    getAnimeDetailedData: async (id: string) => {
+        return await apiRequest<AnimeDetailedApiResponse>(`/anime/${id}`);
     },
     getCharctersAnime: async (id: string) => {
         return await apiRequest<CharactersApiResponse>(`/characters/${id}`)
@@ -42,13 +33,15 @@ export const AnimeService = {
     getVoiceActorAnime: async (id: string) => {
         return await apiRequest<VoiceActorDeatieldApiResposne>(`/people/${id}`)
     },
-
-    getSearchAnime: async (keyword: string, page: number = 1) => {
-        return await apiRequest<SearchApiResponse>(`/search?keyword=${keyword}?page=${page}`);
+    getAnimeEpisodesData: async (id: string) => {
+        const data = await apiRequest<EpisodesApiResponse>(`/episodes/${id}`);
+        return data.data;
     },
-
-
-
-
-
+    getFilteredAnime: async (category: string, page: number = 1) => {
+        return await apiRequest<SearchApiResponse>(`/animes/${category}?page=${page}`);
+    },
+    getAZListAnime: async (letters: string, page: number = 1) => {
+        return await apiRequest<SearchApiResponse>(`/animes/az-list/${letters}?page=${page}`);
+    },
+   
 };

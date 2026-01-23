@@ -1,0 +1,625 @@
+{
+    "success": true,
+    "data": {
+        "title": "Naruto: Shippuden",
+        "alternativeTitle": "Naruto: Shippuuden",
+        "japanese": "ナルト- 疾風伝",
+        "id": "naruto-shippuden-355",
+        "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/9cbcf87f54194742e7686119089478f8.jpg",
+        "rating": "PG-13",
+        "type": "TV",
+        "is18Plus": false,
+        "episodes": {
+            "sub": 500,
+            "dub": 500,
+            "eps": 500
+        },
+        "synopsis": "It has been two and a half years since Naruto Uzumaki left Konohagakure, the Hidden Leaf Village, for intense training following events which fueled his desire to be stronger. Now Akatsuki, the mysterious organization of elite rogue ninja, is closing in on their grand plan which may threaten the safety of the entire shinobi world.\n \nAlthough Naruto is older and sinister events loom on the horizon, he has changed little in personality—still rambunctious and childish—though he is now far more confident and possesses an even greater determination to protect his friends and home. Come whatever may, Naruto will carry on with the fight for what is important to him, even at the expense of his own body, in the continuation of the saga about the boy who wishes to become Hokage.\n\n[Written by MAL Rewrite]",
+        "synonyms": "Naruto Hurricane Chronicles",
+        "aired": {
+            "from": "Feb 15, 2007",
+            "to": "Mar 23, 2017"
+        },
+        "premiered": "Winter 2007",
+        "duration": "23m",
+        "status": "Finished Airing",
+        "MAL_score": "8.15",
+        "genres": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Martial Arts",
+            "Shounen",
+            "Super Power"
+        ],
+        "studios": [
+            "studio-pierrot"
+        ],
+        "producers": [
+            "tv-tokyo",
+            "aniplex",
+            "kss",
+            "rakuonsha",
+            "tv-tokyo-music",
+            "shueisha",
+            "studio-pierrot",
+            "viz-media"
+        ],
+        "moreSeasons": [
+            {
+                "title": "Naruto",
+                "alternativeTitle": "Classic Series",
+                "id": "naruto-677",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/100x200/100/5db400c33f7494bc8ae96f9e634958d0.jpg",
+                "isActive": false
+            },
+            {
+                "title": "Naruto: Shippuden",
+                "alternativeTitle": "Shippuden Series",
+                "id": "naruto-shippuden-355",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/100x200/100/9cbcf87f54194742e7686119089478f8.jpg",
+                "isActive": true
+            },
+            {
+                "title": "NARUTO Spin-Off: Rock Lee & His Ninja Pals",
+                "alternativeTitle": "Spin-Off: Rock Lee & His Ninja Pals",
+                "id": "naruto-spin-off-rock-lee-his-ninja-pals-2992",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/100x200/100/37f8b16b0f693e433207117abe5daf44.jpg",
+                "isActive": false
+            },
+            {
+                "title": "Boruto: Naruto Next Generations",
+                "alternativeTitle": "Boruto Series",
+                "id": "boruto-naruto-next-generations-8143",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/100x200/100/32c83e2ad4a43229996356840db3982c.jpg",
+                "isActive": false
+            }
+        ],
+        "related": [
+            {
+                "title": "Naruto",
+                "alternativeTitle": "Naruto",
+                "id": "naruto-677",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/5db400c33f7494bc8ae96f9e634958d0.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 220,
+                    "dub": 220,
+                    "eps": 220
+                }
+            },
+            {
+                "title": "The Last: Naruto the Movie",
+                "alternativeTitle": "The Last: Naruto the Movie",
+                "id": "the-last-naruto-the-movie-882",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/8d42031c8f566e744d84de02d42466bc.jpg",
+                "type": "Movie",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "Naruto: Shippuuden Movie 6: Road to Ninja",
+                "alternativeTitle": "Naruto: Shippuuden Movie 6 - Road to Ninja",
+                "id": "naruto-shippuuden-movie-6-road-to-ninja-1066",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/dde4a8a8ddd19648711845448d02d6d8.jpg",
+                "type": "Movie",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "Boruto: Naruto the Movie",
+                "alternativeTitle": "Boruto: Naruto the Movie",
+                "id": "boruto-naruto-the-movie-1391",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/f0ad5b3ee01703cc817638973b535aa2.jpg",
+                "type": "Movie",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "Naruto: Shippuuden Movie 5 - Blood Prison",
+                "alternativeTitle": "Naruto: Shippuuden Movie 5 - Blood Prison",
+                "id": "naruto-shippuuden-movie-5-blood-prison-1642",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/23a436a4ae640fa191a587b5e417bf7d.jpg",
+                "type": "Movie",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "Boruto: Naruto the Movie - The Day Naruto Became the Hokage",
+                "alternativeTitle": "Boruto: Naruto the Movie - Naruto ga Hokage ni Natta Hi",
+                "id": "boruto-naruto-the-movie-the-day-naruto-became-the-hokage-1805",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/b19c06fae70eab67b1f390ed3cd905d8.jpg",
+                "type": "Special",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 0,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "Naruto: Shippuuden Movie 4 - The Lost Tower",
+                "alternativeTitle": "Naruto: Shippuuden Movie 4 - The Lost Tower",
+                "id": "naruto-shippuuden-movie-4-the-lost-tower-1821",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/68c5ae4e5b496eb0474920659a9a85e2.jpg",
+                "type": "Movie",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "Naruto x UT",
+                "alternativeTitle": "Naruto x UT",
+                "id": "naruto-x-ut-1840",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/be66602efedb73c4688e302303b0a422.jpg",
+                "type": "OVA",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 0,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "Naruto OVA9: Sunny Side Battle",
+                "alternativeTitle": "Naruto: Shippuuden - Sunny Side Battle",
+                "id": "naruto-ova9-sunny-side-battle-1916",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/94c836b7aff106f515b53f8eb440ccdf.jpg",
+                "type": "Special",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 0,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "Naruto Shippuuden Movie 3: Inheritors of Will of Fire",
+                "alternativeTitle": "Naruto: Shippuuden Movie 3 - Hi no Ishi wo Tsugu Mono",
+                "id": "naruto-shippuuden-movie-3-inheritors-of-will-of-fire-2044",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/1b9aad793b15265876f479c53ca7bfe1.jpg",
+                "type": "Movie",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "Naruto: Shippuden the Movie",
+                "alternativeTitle": "Naruto: Shippuuden Movie 1",
+                "id": "naruto-shippuden-the-movie-2306",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/071ca93201eccc34a9e088013bc27807.jpg",
+                "type": "Movie",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "Naruto: Shippuden the Movie 2 -Bonds-",
+                "alternativeTitle": "Naruto: Shippuuden Movie 2 - Kizuna",
+                "id": "naruto-shippuden-the-movie-2-bonds-2346",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/74a112674ab92212933e41cb532689a5.jpg",
+                "type": "Movie",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                }
+            },
+            {
+                "title": "NARUTO Spin-Off: Rock Lee & His Ninja Pals",
+                "alternativeTitle": "Naruto SD: Rock Lee no Seishun Full-Power Ninden",
+                "id": "naruto-spin-off-rock-lee-his-ninja-pals-2992",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/37f8b16b0f693e433207117abe5daf44.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 51,
+                    "dub": 51,
+                    "eps": 51
+                }
+            },
+            {
+                "title": "Boruto: Naruto Next Generations",
+                "alternativeTitle": "Boruto: Naruto Next Generations",
+                "id": "boruto-naruto-next-generations-8143",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/32c83e2ad4a43229996356840db3982c.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 293,
+                    "dub": 293,
+                    "eps": 293
+                }
+            }
+        ],
+        "mostPopular": [
+            {
+                "title": "One Piece",
+                "alternativeTitle": "One Piece",
+                "id": "one-piece-100",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/bcd84731a3eda4f4a306250769675065.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 1155,
+                    "dub": 1143,
+                    "eps": 1155
+                }
+            },
+            {
+                "title": "Naruto: Shippuden",
+                "alternativeTitle": "Naruto: Shippuuden",
+                "id": "naruto-shippuden-355",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/9cbcf87f54194742e7686119089478f8.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 500,
+                    "dub": 500,
+                    "eps": 500
+                }
+            },
+            {
+                "title": "Bleach",
+                "alternativeTitle": "Bleach",
+                "id": "bleach-806",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/bd5ae1d387a59c5abcf5e1a6a616728c.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 366,
+                    "dub": 366,
+                    "eps": 366
+                }
+            },
+            {
+                "title": "Black Clover",
+                "alternativeTitle": "Black Clover",
+                "id": "black-clover-2404",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/f58b0204c20ae3310f65ae7b8cb9987e.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 170,
+                    "dub": 170,
+                    "eps": 170
+                }
+            },
+            {
+                "title": "Solo Leveling Season 2: Arise from the Shadow",
+                "alternativeTitle": "Ore dake Level Up na Ken Season 2: Arise from the Shadow",
+                "id": "solo-leveling-season-2-arise-from-the-shadow-19413",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/65f92e6e315a931ef872da4b312442b8.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 13,
+                    "dub": 13,
+                    "eps": 13
+                }
+            },
+            {
+                "title": "Jujutsu Kaisen 2nd Season",
+                "alternativeTitle": "Jujutsu Kaisen 2nd Season",
+                "id": "jujutsu-kaisen-2nd-season-18413",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/b51f863b05f30576cf9d85fa9b911bb5.png",
+                "type": "TV",
+                "episodes": {
+                    "sub": 23,
+                    "dub": 23,
+                    "eps": 23
+                }
+            },
+            {
+                "title": "Naruto",
+                "alternativeTitle": "Naruto",
+                "id": "naruto-677",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/5db400c33f7494bc8ae96f9e634958d0.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 220,
+                    "dub": 220,
+                    "eps": 220
+                }
+            },
+            {
+                "title": "Boruto: Naruto Next Generations",
+                "alternativeTitle": "Boruto: Naruto Next Generations",
+                "id": "boruto-naruto-next-generations-8143",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/32c83e2ad4a43229996356840db3982c.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 293,
+                    "dub": 293,
+                    "eps": 293
+                }
+            },
+            {
+                "title": "Demon Slayer: Kimetsu no Yaiba Swordsmith Village Arc",
+                "alternativeTitle": "Kimetsu no Yaiba: Katanakaji no Sato-hen",
+                "id": "demon-slayer-kimetsu-no-yaiba-swordsmith-village-arc-18056",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/db2f3ce7b9cab7fdc160b005bffb899a.png",
+                "type": "TV",
+                "episodes": {
+                    "sub": 11,
+                    "dub": 11,
+                    "eps": 11
+                }
+            },
+            {
+                "title": "Jujutsu Kaisen (TV)",
+                "alternativeTitle": "Jujutsu Kaisen (TV)",
+                "id": "jujutsu-kaisen-tv-534",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/82402f796b7d84d7071ab1e03ff7747a.jpg",
+                "type": "TV",
+                "episodes": {
+                    "sub": 24,
+                    "dub": 24,
+                    "eps": 24
+                }
+            }
+        ],
+        "recommended": [
+            {
+                "title": "Shin Chan",
+                "alternativeTitle": "Crayon Shin-chan",
+                "id": "shin-chan-1058",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/e823a4a4b8b1445deac56a7075aa8748.jpg",
+                "type": "TV",
+                "duration": "21m",
+                "episodes": {
+                    "sub": 78,
+                    "dub": 78,
+                    "eps": 78
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Full Metal Panic! The Second Raid: Wari to Hima na Sentaichou no Ichinichi",
+                "alternativeTitle": "Full Metal Panic! The Second Raid: Wari to Hima na Sentaichou no Ichinichi",
+                "id": "full-metal-panic-the-second-raid-wari-to-hima-na-sentaichou-no-ichinichi-1060",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/1f0524dacf359ae3c79558c8d95ef0ca.jpg",
+                "type": "Special",
+                "duration": "30m",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Legend of the Galactic Heroes: Die Neue These",
+                "alternativeTitle": "Ginga Eiyuu Densetsu: Die Neue These - Kaikou",
+                "id": "legend-of-the-galactic-heroes-die-neue-these-1061",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/ccdf55fa2b30b261a0c419b2f78ea412.jpg",
+                "type": "TV",
+                "duration": "25m",
+                "episodes": {
+                    "sub": 12,
+                    "dub": 12,
+                    "eps": 12
+                },
+                "is18Plus": true
+            },
+            {
+                "title": "Haikyuu!!: vs. \"Akaten\"",
+                "alternativeTitle": "Haikyuu!!: vs. \"Akaten\"",
+                "id": "haikyuu-vs-akaten-1062",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/ba31a077549b4f26f70a8f31425869bf.jpg",
+                "type": "OVA",
+                "duration": "24m",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 0,
+                    "eps": 1
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Hellsing: Digest for Freaks",
+                "alternativeTitle": "Hellsing: Digest for Freaks",
+                "id": "hellsing-digest-for-freaks-1063",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/ccae821a719bf16e3e616da7ff17c245.jpg",
+                "type": "OVA",
+                "duration": "28m",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 0,
+                    "eps": 1
+                },
+                "is18Plus": true
+            },
+            {
+                "title": "Bokura wa Minna Kawai-sou: Hajimete no",
+                "alternativeTitle": "Bokura wa Minna Kawai-sou: Hajimete no",
+                "id": "bokura-wa-minna-kawai-sou-hajimete-no-1069",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/285aab25e7df01f38dd9370a2b5af8d2.jpg",
+                "type": "Special",
+                "duration": "23m",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 0,
+                    "eps": 1
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Broken Blade",
+                "alternativeTitle": "Break Blade 1: Kakusei no Toki",
+                "id": "broken-blade-1070",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/b7372cf944f4a343a7b1878ced6f7b40.jpg",
+                "type": "Movie",
+                "duration": "51m",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                },
+                "is18Plus": true
+            },
+            {
+                "title": "Gabriel DropOut Specials",
+                "alternativeTitle": "Gabriel DropOut Specials",
+                "id": "gabriel-dropout-specials-1075",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/571e7ad41865d979ba71e1bc9ed085c8.jpg",
+                "type": "Special",
+                "duration": "15m",
+                "episodes": {
+                    "sub": 2,
+                    "dub": 0,
+                    "eps": 2
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Hakkenden -Eight Dogs of the East- Season 2",
+                "alternativeTitle": "Hakkenden: Touhou Hakken Ibun 2nd Season",
+                "id": "hakkenden-eight-dogs-of-the-east-season-2-1077",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/6a5f6ee9b96c4c32fc0993d2747cc5bd.jpg",
+                "type": "TV",
+                "duration": "24m",
+                "episodes": {
+                    "sub": 13,
+                    "dub": 13,
+                    "eps": 13
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Wandering Witch: The Journey of Elaina",
+                "alternativeTitle": "Majo no Tabitabi",
+                "id": "wandering-witch-the-journey-of-elaina-1064",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/70c4669b662d78bc5fb679d06bf2f801.jpg",
+                "type": "TV",
+                "duration": "24m",
+                "episodes": {
+                    "sub": 12,
+                    "dub": 12,
+                    "eps": 12
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Naruto: Shippuuden Movie 6: Road to Ninja",
+                "alternativeTitle": "Naruto: Shippuuden Movie 6 - Road to Ninja",
+                "id": "naruto-shippuuden-movie-6-road-to-ninja-1066",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/dde4a8a8ddd19648711845448d02d6d8.jpg",
+                "type": "Movie",
+                "duration": "109m",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Sailor Moon S: The Movie - Hearts in Ice",
+                "alternativeTitle": "Bishoujo Senshi Sailor Moon S: Kaguya-hime no Koibito",
+                "id": "sailor-moon-s-the-movie-hearts-in-ice-1068",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/07df1cd747e5fce053a29f05646c56b1.jpg",
+                "type": "Movie",
+                "duration": "1m",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Getter Robo: Armageddon",
+                "alternativeTitle": "Change!! Getter Robo: Sekai Saigo no Hi",
+                "id": "getter-robo-armageddon-1071",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/199101626a37735a209475c31d582cf7.jpg",
+                "type": "OVA",
+                "duration": "25m",
+                "episodes": {
+                    "sub": 13,
+                    "dub": 13,
+                    "eps": 13
+                },
+                "is18Plus": true
+            },
+            {
+                "title": "Code Geass: Lelouch of the Rebellion II - Transgression",
+                "alternativeTitle": "Code Geass: Hangyaku no Lelouch II - Handou",
+                "id": "code-geass-lelouch-of-the-rebellion-ii-transgression-1072",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/8ff6771f956f01a22dfa405bb23c3f37.jpg",
+                "type": "Movie",
+                "duration": "132m",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 0,
+                    "eps": 1
+                },
+                "is18Plus": true
+            },
+            {
+                "title": "Crayon Shin-chan Movie 09: The Storm Called: The Adult Empire Strikes Back",
+                "alternativeTitle": "Crayon Shin-chan Movie 09: Arashi wo Yobu Mouretsu! Otona Teikoku no Gyakushuu",
+                "id": "crayon-shin-chan-movie-09-the-storm-called-the-adult-empire-strikes-back-1073",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/774fe303635fedd52960384b2e81ac71.jpg",
+                "type": "Movie",
+                "duration": "89m",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 0,
+                    "eps": 1
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Hakuoki ~Demon of the Fleeting Blossom~ Wild Dance of Kyoto",
+                "alternativeTitle": "Hakuouki Movie 1: Kyoto Ranbu",
+                "id": "hakuoki-demon-of-the-fleeting-blossom-wild-dance-of-kyoto-1078",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/9e82232dd258f59eff928b0f866767cc.jpg",
+                "type": "Movie",
+                "duration": "95m",
+                "episodes": {
+                    "sub": 1,
+                    "dub": 1,
+                    "eps": 1
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Cells at Work!",
+                "alternativeTitle": "Hataraku Saibou (TV)",
+                "id": "cells-at-work-1079",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/751f50f709beed180a1f462cfd6fa71c.jpg",
+                "type": "TV",
+                "duration": "23m",
+                "episodes": {
+                    "sub": 13,
+                    "dub": 13,
+                    "eps": 13
+                },
+                "is18Plus": false
+            },
+            {
+                "title": "Kindaichi Shounen no Jikenbo Returns 2nd Season",
+                "alternativeTitle": "Kindaichi Shounen no Jikenbo Returns 2nd Season",
+                "id": "kindaichi-shounen-no-jikenbo-returns-2nd-season-1080",
+                "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/46f821592e6a70929ce886fc45429ed1.jpg",
+                "type": "TV",
+                "duration": "24m",
+                "episodes": {
+                    "sub": 22,
+                    "dub": 0,
+                    "eps": 22
+                },
+                "is18Plus": true
+            }
+        ]
+    }
+}

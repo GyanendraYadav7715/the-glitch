@@ -1,12 +1,11 @@
 "use client";
-
 import { useState, useEffect, use } from "react";
-import EpisodeList from "../EpisodeList"; // Adjust path if needed
-import Player from "../Player"; // Adjust path if needed
-import { fetchAnimeEpisodes, Episode } from "@/lib/animeService";
+import EpisodeList from "../EpisodeList";
+import Player from "../Player";
+import { Episode } from "@/types/episodes.type";
+import { AnimeService } from "@/services/anime-service";
 import Link from "next/link";
 
-// define params as a Promise for Next.js 15+
 interface PageProps {
   params: Promise<{
     id: string;
@@ -14,19 +13,15 @@ interface PageProps {
 }
 
 const AnimeWatchPage = ({ params }: PageProps) => {
-  // 1. UNWRAP PARAMS: Fixes the "Sync Dynamic APIs" error
   const { id } = use(params);
-
-  // 2. STATE
   const [episodes, setEpisodes] = useState<Episode[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // 3. FETCH DATA
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
-      const data = await fetchAnimeEpisodes(id);
+      const data = await AnimeService.getAnimeEpisodesData(id);
       setEpisodes(data);
       setLoading(false);
     };
@@ -36,7 +31,6 @@ const AnimeWatchPage = ({ params }: PageProps) => {
     }
   }, [id]);
 
-  // 4. COMPUTED HELPERS
   const currentEpisode = episodes[currentIndex];
 
   const handleChangeEpisode = (action: "next" | "prev") => {
@@ -52,21 +46,6 @@ const AnimeWatchPage = ({ params }: PageProps) => {
     if (foundIndex !== -1) setCurrentIndex(foundIndex);
   };
 
-  // 5. LOADING STATE UI
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#0f0f0f] flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-pink-500"></div>
-          <p className="text-gray-500 text-sm animate-pulse">
-            Summoning Jutsu...
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  // 6. EMPTY STATE UI
   if (!episodes || episodes.length === 0) {
     return (
       <div className="min-h-screen bg-[#0f0f0f] flex items-center justify-center text-white">
@@ -81,7 +60,6 @@ const AnimeWatchPage = ({ params }: PageProps) => {
     );
   }
 
-  // 7. MAIN RENDER
   return (
     <>
       {" "}
@@ -139,15 +117,11 @@ const AnimeWatchPage = ({ params }: PageProps) => {
               {/* Info Card */}
               <div className="bg-[#1c1c22] p-5 rounded-lg flex flex-col gap-4">
                 {/* Poster */}
-                <div className="w-32 aspect-[2/3] bg-gray-700 self-center rounded shadow-lg mb-2">
-                 
-                </div>
+                <div className="w-32 aspect-[2/3] bg-gray-700 self-center rounded shadow-lg mb-2"></div>
 
                 {/* Title Skeleton */}
                 <div className="space-y-2 flex flex-col items-center">
-                  <div className="h-5 w-full text-center rounded">
-                    {id}
-                  </div>
+                  <div className="h-5 w-full text-center rounded">{id}</div>
                   <div className="h-5 w-2/3 bg-gray-600 rounded"></div>
                 </div>
 
