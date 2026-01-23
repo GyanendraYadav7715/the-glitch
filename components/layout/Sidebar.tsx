@@ -52,7 +52,10 @@ const Sidebar: React.FC<SidebarProps> = ({
               className="py-4 pl-4 hover:text-primary border-b border-[rgba(255,255,255,.05)] w-full transition-colors"
               onClick={onClose}
             >
-              <Link href={item.link} className="block w-full">
+              <Link
+                href={`/animes/${item.link}?page=1`}
+                className="block w-full"
+              >
                 {item.name}
               </Link>
             </li>

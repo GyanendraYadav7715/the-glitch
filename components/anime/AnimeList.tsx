@@ -31,7 +31,7 @@ export default function AnimeGrid({
       {/* Header Section */}
       <div className="flex mt-8 mb-4 justify-between items-center px-1">
         {title ? (
-          <h1 className="text-xl md:text-2xl font-bold text-[#FFB6D9] ">
+          <h1 className="text-xl md:text-2xl font-bold text-[#FFB6D9] capitalize ">
             {title}
           </h1>
         ) : (
@@ -42,7 +42,7 @@ export default function AnimeGrid({
 
         {path && (
           <Link
-            href={`${config.siteRoutes.discover}${path}`}
+            href={`/animes/${path}?page=1`}
             className="flex items-center gap-1 text-sm text-neutral-400 hover:text-[#FFB6D9] transition-colors"
           >
             <span>View more</span>

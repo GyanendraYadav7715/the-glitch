@@ -261,7 +261,7 @@ export default function AnimeListSection({
         {/* View More Link */}
         {path && (
           <Link
-            href={`${config.siteRoutes.discover}${path}`}
+            href={`/animes/${path}?page=1`}
             className="mt-4 pt-4 border-t border-white/5 flex items-center gap-1 text-sm text-[#FFB6D9]/80 hover:text-[#FFB6D9] transition-colors w-fit group"
           >
             <span>View More</span>

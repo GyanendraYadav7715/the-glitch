@@ -1,4 +1,4 @@
- 
+ //http://localhost:3001/api/animes/genre/parody?page=1
 import Link from "next/link";
 
 const Page = async () => {
