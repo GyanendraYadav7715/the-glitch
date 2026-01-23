@@ -43,8 +43,12 @@ export const AnimeService = {
         return await apiRequest<VoiceActorDeatieldApiResposne>(`/people/${id}`)
     },
 
+    getSearchAnime: async (keyword: string, page: number = 1) => {
+        return await apiRequest<SearchApiResponse>(`/search?keyword=${keyword}?page=${page}`);
+    },
 
 
-    
+
+
 
 };

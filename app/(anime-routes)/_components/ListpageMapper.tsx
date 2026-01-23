@@ -17,8 +17,15 @@ export default async function ListpageMapper({
   id,
 }: Props) {
   // Fetching data directly on the server
-  const response = await AnimeService.getFilteredAnime(id, currentPage);
+  let response;
+  if (apiPath == "search") {
+    response = await AnimeService.getSearchAnime(id, currentPage);
+    
+  } else {
+     response = await AnimeService.getFilteredAnime(id, currentPage);
 
+  }
+    
   if (!response?.success) {
     throw new Error("Failed to fetch anime list");
   }

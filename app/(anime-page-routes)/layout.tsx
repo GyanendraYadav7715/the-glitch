@@ -1,6 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/ui/Footer";
-import Nava from "@/components/ui/Navbar"
 export default async function AnimeLayout({
   children,
 }: {
